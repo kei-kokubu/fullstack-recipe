@@ -1,0 +1,18 @@
+/**
+ * @param { import("knex").Knex } knex
+ * @returns { Promise<void> }
+ */
+exports.up = function (knex) {
+  return knex.schema.createTable("recipe_user", function (table) {
+    table.increments("id").primary();
+    table.string("userName", 64).notNullable();
+  });
+};
+
+/**
+ * @param { import("knex").Knex } knex
+ * @returns { Promise<void> }
+ */
+exports.down = function (knex) {
+  return knex.schema.dropTable("recipe_user");
+};
