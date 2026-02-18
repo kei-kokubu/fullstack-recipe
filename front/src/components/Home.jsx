@@ -14,7 +14,7 @@ export const Home = () => {
   const onClickSearchRecipe = () => {
     console.log("検索");
     setSearchRecipeText("");
-    nav("/recipes");
+    nav(`/recipes?keyword=${searchRecipeText}`);
   };
   return (
     <>

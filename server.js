@@ -7,8 +7,16 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "/public")));
 
-app.use("/recipes", async (req, res) => {
+app.get("/api/recipes", async (req, res) => {
   const result = await db("recipe").select("*");
+  res.send(result);
+});
+
+app.get("/api/recipes/:keyword", async (req, res) => {
+  const keyword = req.params.keyword;
+  const result = await db("recipe")
+    .select("*")
+    .whereLike("title", `%${keyword}%`);
   res.send(result);
 });
 
