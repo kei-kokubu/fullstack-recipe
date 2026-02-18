@@ -1,12 +1,15 @@
 const path = require("path");
 const express = require("express");
+const db = require("./index");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(express.json());
 app.use(express.static(path.join(__dirname, "/public")));
 
-app.use("/api", (req, res) => {
-  res.send("Hello, World!");
+app.use("/recipes", async (req, res) => {
+  const result = await db("recipe").select("*");
+  res.send(result);
 });
 
 app.listen(PORT, () => {

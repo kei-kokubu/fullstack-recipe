@@ -40,3 +40,8 @@
 .read-the-docs {
   color: #888;
 }
+
+.recipeCard {
+  border: 2px solid #999;
+  border-radius: 8px;
+}

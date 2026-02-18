@@ -7,11 +7,6 @@ export const Home = () => {
 
   const nav = useNavigate();
 
-  // useEffect(() => {
-  //   fetch("/api")
-  //     .then((res) => res.text())
-  //     .then((data) => setMessage(data));
-  // }, []);
   const onChangeSearchRecipeText = (e) => {
     setSearchRecipeText(e.target.value);
   };

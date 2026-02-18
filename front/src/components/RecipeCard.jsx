@@ -1,7 +1,9 @@
+import "../App.css";
+
 export const RecipeCard = (props) => {
   const { title, description } = props;
   return (
-    <div>
+    <div className="recipeCard">
       <p>{title}</p>
       <p>{description}</p>
     </div>
