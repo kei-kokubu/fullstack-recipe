@@ -35,6 +35,7 @@ function recipeData() {
       servenumber: 2,
       user_id: 1,
       created_at: "2024-03-14 10:08:21",
+      image_url: "../../public/キーマカレー.jpeg",
     },
     {
       id: 2,
@@ -46,6 +47,7 @@ function recipeData() {
       servenumber: 1,
       user_id: 2,
       created_at: "2024-06-23 23:54:32",
+      image_url: "../../public/carbo.jpg",
     },
     {
       id: 3,
@@ -57,6 +59,7 @@ function recipeData() {
       servenumber: 1,
       user_id: 3,
       created_at: "2024-12-15 04:12:19",
+      image_url: "../../public/tyahan.jpg",
     },
     {
       id: 4,
@@ -68,6 +71,7 @@ function recipeData() {
       servenumber: 3,
       user_id: 4,
       created_at: "2025-02-01 11:32:47",
+      image_url: "../../public/nikujaga.avif",
     },
     {
       id: 5,
@@ -79,6 +83,7 @@ function recipeData() {
       servenumber: 1,
       user_id: 5,
       created_at: "2025-05-26 17:45:00",
+      image_url: "../../public/ガパオライス.jpeg",
     },
     {
       id: 6,
@@ -90,6 +95,7 @@ function recipeData() {
       servenumber: 4,
       user_id: 6,
       created_at: "2025-07-07 09:01:55",
+      image_url: "../../public/tonjiru.jpg",
     },
     {
       id: 7,
@@ -101,6 +107,7 @@ function recipeData() {
       servenumber: 1,
       user_id: 7,
       created_at: "2025-09-16 13:25:13",
+      image_url: "../../public/ペペロンチーノ.jpeg",
     },
     {
       id: 8,
@@ -112,6 +119,7 @@ function recipeData() {
       servenumber: 2,
       user_id: 8,
       created_at: "2025-10-22 02:18:43",
+      image_url: "../../public/mabo.jpg",
     },
     {
       id: 9,
@@ -123,6 +131,7 @@ function recipeData() {
       servenumber: 2,
       user_id: 9,
       created_at: "2025-12-29 19:57:38",
+      image_url: "../../public/hambarg.avif",
     },
     {
       id: 10,
@@ -134,6 +143,7 @@ function recipeData() {
       servenumber: 2,
       user_id: 10,
       created_at: "2026-01-03 08:22:10",
+      image_url: "../../public/sizer.jpg",
     },
     {
       id: 11,
@@ -145,6 +155,7 @@ function recipeData() {
       servenumber: 2,
       user_id: 11,
       created_at: "2025-06-18 16:04:12",
+      image_url: "../../public/saba.avif",
     },
     {
       id: 12,
@@ -156,6 +167,7 @@ function recipeData() {
       servenumber: 2,
       user_id: 12,
       created_at: "2024-09-02 07:11:29",
+      image_url: "../../public/ebi.avif",
     },
     {
       id: 13,
@@ -167,6 +179,7 @@ function recipeData() {
       servenumber: 2,
       user_id: 13,
       created_at: "2025-11-05 21:33:30",
+      image_url: "../../public/pizza.jpeg",
     },
     {
       id: 14,
@@ -178,6 +191,7 @@ function recipeData() {
       servenumber: 1,
       user_id: 14,
       created_at: "2024-08-30 18:39:59",
+      image_url: "../../public/オム.jpeg",
     },
     {
       id: 15,
@@ -189,6 +203,7 @@ function recipeData() {
       servenumber: 1,
       user_id: 15,
       created_at: "2024-11-05 15:41:50",
+      image_url: "../../public/don.webp",
     },
     {
       id: 16,
@@ -200,6 +215,7 @@ function recipeData() {
       servenumber: 3,
       user_id: 16,
       created_at: "2024-04-08 22:04:41",
+      image_url: "../../public/gyoza.jpg",
     },
     {
       id: 17,
@@ -211,6 +227,7 @@ function recipeData() {
       servenumber: 2,
       user_id: 17,
       created_at: "2026-01-27 05:54:37",
+      image_url: "../../public/cake.jpg",
     },
     {
       id: 18,
@@ -222,6 +239,7 @@ function recipeData() {
       servenumber: 2,
       user_id: 18,
       created_at: "2025-04-23 12:06:28",
+      image_url: "../../public/teri.jpg",
     },
     {
       id: 19,
@@ -233,6 +251,7 @@ function recipeData() {
       servenumber: 3,
       user_id: 19,
       created_at: "2024-10-19 01:20:16",
+      image_url: "../../public/kura.webp",
     },
     {
       id: 20,
@@ -244,6 +263,7 @@ function recipeData() {
       servenumber: 4,
       user_id: 20,
       created_at: "2026-02-01 17:40:22",
+      image_url: "../../public/ティラミス.jpeg",
     },
   ];
 }

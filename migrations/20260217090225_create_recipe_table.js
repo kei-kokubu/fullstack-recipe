@@ -13,6 +13,7 @@ exports.up = function (knex) {
     table.integer("servenumber").notNullable();
     table.integer("user_id").notNullable();
     table.timestamp("created_at").defaultTo(knex.fn.now());
+    table.text("image_url");
     table.foreign("user_id").references("recipe_user.id").onDelete("CASCADE");
   });
 };

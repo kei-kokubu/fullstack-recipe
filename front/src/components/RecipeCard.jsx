@@ -10,6 +10,7 @@ export const RecipeCard = (props) => {
   const yyyymmdd = `${y}/${m}/${d}`;
   return (
     <div className="recipeCard">
+      <img src={recipe.image_url} height="200px" />
       <p>{recipe.title}</p>
       <p>{recipe.description}</p>
       <p>{recipe.ingredients}</p>
