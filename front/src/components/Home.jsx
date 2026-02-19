@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { InputRecipes } from "./InputRecipe";
 import { useNavigate } from "react-router-dom";
 
@@ -12,9 +12,13 @@ export const Home = () => {
   };
 
   const onClickSearchRecipe = () => {
-    console.log("検索");
     setSearchRecipeText("");
     nav(`/recipes?keyword=${searchRecipeText}`);
+  };
+
+  const onClickToMypage = () => {
+    console.log("マイページ");
+    nav(`/mypages`);
   };
   return (
     <>
@@ -24,6 +28,8 @@ export const Home = () => {
         onChange={onChangeSearchRecipeText}
         onClickSearch={onClickSearchRecipe}
       />
+      <br />
+      <button onClick={onClickToMypage}>マイページへ</button>
     </>
   );
 };

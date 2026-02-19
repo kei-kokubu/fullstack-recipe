@@ -8,15 +8,42 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "/public")));
 
 app.get("/api/recipes", async (req, res) => {
-  const result = await db("recipe").select("*");
+  const result = await db("recipe")
+    .join("recipe_user", "recipe.user_id", "recipe_user.id")
+    .select("*");
   res.send(result);
 });
 
 app.get("/api/recipes/:keyword", async (req, res) => {
   const keyword = req.params.keyword;
   const result = await db("recipe")
+    .join("recipe_user", "recipe.user_id", "recipe_user.id")
     .select("*")
-    .whereLike("title", `%${keyword}%`);
+    .where("title", "like", `%${keyword}%`)
+    .orWhere("description", "like", `%${keyword}%`)
+    .orWhere("ingredients", "like", `%${keyword}%`)
+    .orWhere("genre", "like", `%${keyword}%`);
+  res.send(result);
+});
+
+app.post("/api/recipes", async (req, res) => {
+  const data = req.body.data;
+  const id = 3; //ログイン機能実装まで仮
+  const result = await db("favorites")
+    .insert({
+      user_id: id,
+      recipe_id: data.id,
+    })
+    .returning("*");
+  res.send(result);
+});
+
+app.get("/api/mypages/:id", async (req, res) => {
+  const id = req.params.id;
+  const result = await db("favorites")
+    .join("recipe", "favorites.recipe_id", "recipe.id")
+    .select("*")
+    .where("favorites.user_id", id);
   res.send(result);
 });
 

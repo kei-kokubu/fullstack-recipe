@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { RecipeCard } from "./RecipeCard";
+
 export const SearchResult = () => {
   const [recipes, setRecipes] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -18,13 +19,28 @@ export const SearchResult = () => {
         .then((data) => setRecipes(data));
     }
   }, []);
+
+  const onClickSave = (index) => {
+    fetch(`/api/recipes`, {
+      method: "POST",
+      body: JSON.stringify({ data: recipes[index] }),
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("=======", data);
+      });
+  };
   return (
     <>
-      {recipes.map((recipe) => (
+      <p>{keyword}</p>
+      <p>検索結果：{recipes.length}</p>
+      {recipes.map((recipe, index) => (
         <RecipeCard
           key={recipe.id}
-          title={recipe.title}
-          description={recipe.description}
+          recipe={recipe}
+          index={index}
+          onClick={onClickSave}
         />
       ))}
     </>

@@ -1,11 +1,25 @@
 import "../App.css";
 
 export const RecipeCard = (props) => {
-  const { title, description } = props;
+  const { recipe, index, onClick } = props;
+  const timestamp = recipe.created_at;
+  const date = new Date(timestamp);
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, "0");
+  const d = String(date.getDate()).padStart(2, "0");
+  const yyyymmdd = `${y}/${m}/${d}`;
   return (
     <div className="recipeCard">
-      <p>{title}</p>
-      <p>{description}</p>
+      <p>{recipe.title}</p>
+      <p>{recipe.description}</p>
+      <p>{recipe.ingredients}</p>
+      <p>{recipe.instructions}</p>
+      <p>{recipe.genre}</p>
+      <p>{recipe.servenumber}人前</p>
+      {/* <p>{recipe.user_id}</p> */}
+      <p>{recipe.user_name}</p>
+      <p>{yyyymmdd}</p>
+      <button onClick={() => onClick(index)}>保存</button>
     </div>
   );
 };
