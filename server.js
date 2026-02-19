@@ -53,6 +53,12 @@ app.get("/api/mypages/:id", async (req, res) => {
   res.send(result);
 });
 
+app.put("/api/favorites/memo", async (req, res) => {
+  const { user_id, recipe_id, memo } = req.body;
+  await db("favorites").update({ memo }).where({ user_id, recipe_id });
+  res.json({ success: true });
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

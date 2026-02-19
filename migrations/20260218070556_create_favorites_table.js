@@ -8,6 +8,7 @@ exports.up = function (knex) {
     table.integer("user_id").notNullable();
     table.integer("recipe_id").notNullable();
     table.timestamp("created_at").defaultTo(knex.fn.now());
+    table.text("memo");
     table.foreign("user_id").references("recipe_user.id").onDelete("CASCADE");
     table.foreign("recipe_id").references("recipe.id").onDelete("CASCADE");
   });
