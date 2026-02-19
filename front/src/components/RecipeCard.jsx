@@ -1,7 +1,7 @@
 import "../App.css";
 
 export const RecipeCard = (props) => {
-  const { recipe, index, onClick } = props;
+  const { recipe, isFavarite, onClickFav, onClickUnFav } = props;
   const timestamp = recipe.created_at;
   const date = new Date(timestamp);
   const y = date.getFullYear();
@@ -19,7 +19,11 @@ export const RecipeCard = (props) => {
       {/* <p>{recipe.user_id}</p> */}
       <p>{recipe.user_name}</p>
       <p>{yyyymmdd}</p>
-      <button onClick={() => onClick(index)}>保存</button>
+      {!isFavarite ? (
+        <button onClick={() => onClickFav(recipe.id)}>お気に入り登録</button>
+      ) : (
+        <button onClick={() => onClickUnFav(recipe.id)}>お気に入り削除</button>
+      )}
     </div>
   );
 };

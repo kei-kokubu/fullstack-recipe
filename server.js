@@ -26,16 +26,22 @@ app.get("/api/recipes/:keyword", async (req, res) => {
   res.send(result);
 });
 
-app.post("/api/recipes", async (req, res) => {
-  const data = req.body.data;
-  const id = 3; //ログイン機能実装まで仮
-  const result = await db("favorites")
-    .insert({
-      user_id: id,
-      recipe_id: data.id,
-    })
-    .returning("*");
-  res.send(result);
+app.get("/api/favorites/check", async (req, res) => {
+  const { user_id, recipe_id } = req.query;
+  const exists = await db("favorites").where({ user_id, recipe_id }).first();
+  res.json({ isFavorite: !!exists });
+});
+
+app.post("/api/favorites", async (req, res) => {
+  const { user_id, recipe_id } = req.body;
+  await db("favorites").insert({ user_id, recipe_id });
+  res.json({ success: true });
+});
+
+app.delete("/api/favorites", async (req, res) => {
+  const { user_id, recipe_id } = req.body;
+  await db("favorites").where({ user_id, recipe_id }).del();
+  res.json({ success: true });
 });
 
 app.get("/api/mypages/:id", async (req, res) => {

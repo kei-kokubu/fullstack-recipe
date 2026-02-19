@@ -3,25 +3,34 @@ import { RecipeCard } from "./RecipeCard";
 
 export const MyPage = () => {
   const [favRecipes, setFavRecipes] = useState([]);
-  const id = 3;
+  const [reloadFlg, setReloadFlg] = useState(0);
+  const userId = 3;
+
   useEffect(() => {
-    fetch(`/api/mypages/${id}`)
+    fetch(`/api/mypages/${userId}`)
       .then((res) => res.json())
       .then((data) => setFavRecipes(data));
-  }, []);
+  }, [reloadFlg]);
 
-  const onClickFav = (index) => {
-    console.log("お気に入り");
+  const handleUnfavorite = (recipeId) => {
+    fetch("/api/favorites", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ user_id: userId, recipe_id: recipeId }),
+    }).then(() => {
+      console.log("削除されました");
+      setReloadFlg(reloadFlg + 1);
+    });
   };
   return (
     <>
       <p>マイページです。</p>
-      {favRecipes.map((favRecipe, index) => (
+      {favRecipes.map((favRecipe) => (
         <RecipeCard
           key={favRecipe.id}
           recipe={favRecipe}
-          index={index}
-          onClick={onClickFav}
+          isFavarite={true}
+          onClickUnFav={handleUnfavorite}
         />
       ))}
     </>

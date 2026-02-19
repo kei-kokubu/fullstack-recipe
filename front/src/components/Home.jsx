@@ -17,7 +17,6 @@ export const Home = () => {
   };
 
   const onClickToMypage = () => {
-    console.log("マイページ");
     nav(`/mypages`);
   };
   return (
