@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { useUser } from "./UserContext";
 import axios from "axios";
 import { Home } from "./Home";
+// import { Provider } from "./components/ui/provider";
+// import { defaultSystem } from "@chakra-ui/react";
+// import { Button } from "@chakra-ui/react";
 
 export const Login = () => {
   const { user, setUser } = useUser();
@@ -35,7 +38,7 @@ export const Login = () => {
   };
 
   return (
-    <div style={{ margin: 20 }}>
+    <div>
       <h2>セッション認証デモ</h2>
       {user ? (
         <>

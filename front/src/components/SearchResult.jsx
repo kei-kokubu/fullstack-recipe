@@ -10,7 +10,7 @@ export const SearchResult = () => {
   const { user, setUser } = useUser();
   // .getにてクエリパラメータに設定した値(keyword)を取得する。
   const keyword = searchParams.get("keyword");
-  const userId = user.userId;
+  const userId = user.id;
 
   useEffect(() => {
     if (keyword !== "") {

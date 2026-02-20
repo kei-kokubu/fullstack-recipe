@@ -7,7 +7,7 @@ export const MyPage = () => {
   const [reloadFlg, setReloadFlg] = useState(0);
   const [memo, setMemo] = useState({});
   const { user, setUser } = useUser();
-  const userId = user.userId;
+  const userId = user.id;
 
   useEffect(() => {
     fetch(`/api/mypages/${userId}`)
