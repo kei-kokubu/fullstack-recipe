@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { RecipeCard } from "./RecipeCard";
+import { useUser } from "./UserContext";
 
 export const MyPage = () => {
   const [favRecipes, setFavRecipes] = useState([]);
   const [reloadFlg, setReloadFlg] = useState(0);
   const [memo, setMemo] = useState({});
-  const userId = 3;
+  const { user, setUser } = useUser();
+  const userId = user.userId;
 
   useEffect(() => {
     fetch(`/api/mypages/${userId}`)

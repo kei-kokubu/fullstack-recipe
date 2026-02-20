@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { RecipeCard } from "./RecipeCard";
+import { useUser } from "./UserContext";
 
 export const SearchResult = () => {
   const [recipes, setRecipes] = useState([]);
   const [favorites, setFavorites] = useState({});
   const [searchParams, setSearchParams] = useSearchParams();
+  const { user, setUser } = useUser();
   // .getにてクエリパラメータに設定した値(keyword)を取得する。
   const keyword = searchParams.get("keyword");
-  const userId = 3; //ログイン機能実装まで仮
+  const userId = user.userId;
 
   useEffect(() => {
     if (keyword !== "") {

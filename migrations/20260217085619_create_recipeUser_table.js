@@ -6,6 +6,7 @@ exports.up = function (knex) {
   return knex.schema.createTable("recipe_user", function (table) {
     table.increments("id").primary();
     table.string("user_name", 64).notNullable();
+    table.string("user_password", 64).notNullable();
   });
 };
 
