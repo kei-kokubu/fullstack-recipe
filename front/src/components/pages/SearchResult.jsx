@@ -4,6 +4,7 @@ import { RecipeCard } from "../organisms/recipe/RecipeCard";
 import { useUser } from "../UserContext";
 import { Wrap, WrapItem } from "@chakra-ui/react";
 import { HeaderLayout } from "../templetes/HeaderLayout";
+import { NumberOfHits } from "../molecules/NumberOfHits";
 
 export const SearchResult = () => {
   const [recipes, setRecipes] = useState([]);
@@ -67,11 +68,12 @@ export const SearchResult = () => {
 
   return (
     <HeaderLayout>
-      <p>{keyword}</p>
-      <p>検索結果：{recipes.length}</p>
+      {/* <p>{keyword}</p>
+      <p>検索結果：{recipes.length}</p> */}
+      <NumberOfHits keyword={keyword} hits={recipes.length} />
       <Wrap p={10}>
         {recipes.map((recipe) => (
-          <WrapItem key={recipe.id}>
+          <WrapItem key={recipe.id} mx="auto">
             <RecipeCard
               recipe={recipe}
               isFavarite={favorites[recipe.id] || false}

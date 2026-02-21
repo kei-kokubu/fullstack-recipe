@@ -29,7 +29,7 @@ export const RecipeCard = (props) => {
       bg="white"
       boxShadow="md"
       p={4}
-      // mb={6}
+      mb={6}
       transition="box-shadow 0.2s"
       _hover={{ boxShadow: "lg" }}
     >

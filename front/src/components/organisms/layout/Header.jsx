@@ -39,11 +39,11 @@ export const Header = () => {
         _hover={{ cursor: "pointer" }}
         onClick={onClickHome}
       >
-        <Heading as="h1" fontSize={{ base: "md", md: "lg" }}>
+        <Heading as="h1" size="lg">
           レシピ検索アプリ
         </Heading>
       </Flex>
-      <Flex align="center" fontSize="sm" flexGrow={2}>
+      <Flex align="center" fontSize="md" flexGrow={2}>
         <Box pr={4}>
           <Link onClick={onClickToMypage}>マイページ</Link>
         </Box>
