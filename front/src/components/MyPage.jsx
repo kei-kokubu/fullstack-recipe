@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { RecipeCard } from "./RecipeCard";
 import { useUser } from "./UserContext";
+import { Button } from "@chakra-ui/react";
 
 export const MyPage = () => {
   const [favRecipes, setFavRecipes] = useState([]);
@@ -68,9 +69,9 @@ export const MyPage = () => {
             onChange={(e) => onChangeMemo(e, favRecipe.id)}
             value={memo[favRecipe.id] || ""}
           />
-          <button onClick={() => onClickSaveMemo(favRecipe.id)}>
+          <Button onClick={() => onClickSaveMemo(favRecipe.id)}>
             メモを保存
-          </button>
+          </Button>
         </div>
       ))}
     </>

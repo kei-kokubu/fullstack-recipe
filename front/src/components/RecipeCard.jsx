@@ -1,4 +1,4 @@
-import "../App.css";
+import { Button } from "@chakra-ui/react";
 
 export const RecipeCard = (props) => {
   const { recipe, isFavarite, onClickFav, onClickUnFav } = props;
@@ -21,9 +21,9 @@ export const RecipeCard = (props) => {
       <p>{recipe.user_name}</p>
       <p>{yyyymmdd}</p>
       {!isFavarite ? (
-        <button onClick={() => onClickFav(recipe.id)}>お気に入り登録</button>
+        <Button onClick={() => onClickFav(recipe.id)}>お気に入り登録</Button>
       ) : (
-        <button onClick={() => onClickUnFav(recipe.id)}>お気に入り削除</button>
+        <Button onClick={() => onClickUnFav(recipe.id)}>お気に入り削除</Button>
       )}
     </div>
   );

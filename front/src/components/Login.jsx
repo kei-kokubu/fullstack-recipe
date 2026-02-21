@@ -1,14 +1,18 @@
 import { useState, useEffect } from "react";
 import { useUser } from "./UserContext";
 import axios from "axios";
-import { Home } from "./Home";
-// import { Provider } from "./components/ui/provider";
-// import { defaultSystem } from "@chakra-ui/react";
-// import { Button } from "@chakra-ui/react";
+import { Box, Divider, Flex, Heading, Input, Stack } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
+import { PrimaryButton } from "./atoms/button/PrimaryButton";
+import { useMessage } from "../hooks/useMessage";
 
 export const Login = () => {
   const { user, setUser } = useUser();
   const [form, setForm] = useState({ userId: "", password: "" });
+  const [loading, setLoading] = useState(false);
+  const nav = useNavigate();
+
+  const { showMessage } = useMessage();
 
   const fetchUser = async () => {
     try {
@@ -25,43 +29,67 @@ export const Login = () => {
 
   const login = async () => {
     try {
+      setLoading(true);
       await axios.post("/api/login", form);
-      fetchUser();
-    } catch {
-      alert("ログイン失敗");
+      await fetchUser();
+      showMessage({ title: "ログインしました", status: "success" });
+      nav(`/home`);
+    } catch (error) {
+      // サーバーからのエラーメッセージを参照
+      if (error.response) {
+        if (error.response.status === 404) {
+          showMessage({
+            title: "ユーザーが見つかりません",
+            status: "error",
+          });
+        } else if (error.response.status === 401) {
+          showMessage({
+            title: "パスワードが間違っています",
+            status: "error",
+          });
+        } else {
+          showMessage({
+            title: "ログイン失敗",
+            status: "error",
+          });
+        }
+      } else {
+        showMessage({
+          title: "通信エラーが発生しました",
+          status: "error",
+        });
+      }
+    } finally {
+      setLoading(false);
     }
   };
 
-  const logout = async () => {
-    await axios.post("/api/logout");
-    setUser(null);
-  };
-
   return (
-    <div>
-      <h2>セッション認証デモ</h2>
-      {user ? (
-        <>
-          <p>ようこそ、{user.userId}さん！</p>
-          <button onClick={logout}>ログアウト</button>
-          <Home></Home>
-        </>
-      ) : (
-        <>
-          <input
-            style={{ marginRight: 20 }}
-            placeholder="userId"
+    <Flex align="center" justify="center" height="100vh">
+      <Box bg="white" w="sm" p={4} borderRadius="md" shadow="md">
+        <Heading as="h1" size="lg" textAlign="center">
+          レシピ検索アプリ
+        </Heading>
+        <Divider my={4} />
+        <Stack spacing={4} py={4} px={10}>
+          <Input
+            placeholder="ユーザーID"
             onChange={(e) => setForm({ ...form, userId: e.target.value })}
           />
-          <input
-            style={{ marginRight: 20 }}
+          <Input
             placeholder="password"
             type="password"
             onChange={(e) => setForm({ ...form, password: e.target.value })}
           />
-          <button onClick={login}>ログイン</button>
-        </>
-      )}
-    </div>
+          <PrimaryButton
+            disabled={form.userId === "" || form.password === ""}
+            loading={loading}
+            onClick={login}
+          >
+            ログイン
+          </PrimaryButton>
+        </Stack>
+      </Box>
+    </Flex>
   );
 };

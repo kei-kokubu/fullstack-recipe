@@ -89,12 +89,28 @@ app.put("/api/favorites/memo", async (req, res) => {
 app.post("/api/login", async (req, res) => {
   const id = req.body.userId;
   const user_password = req.body.password;
-  const user = await db("recipe_user").where({ id, user_password }).first();
-  if (user) {
-    req.session.user = { id };
-    return res.json({ message: "ログイン成功" });
+  // const user = await db("recipe_user").where({ id, user_password }).first();
+  // if (user) {
+  //   req.session.user = { id };
+  //   return res.json({ message: "ログイン成功" });
+  // }
+  // res.status(401).json({ message: "認証失敗" });
+  // まずユーザーが存在するか確認
+  const user = await db("recipe_user").where({ id }).first();
+
+  if (!user) {
+    // ユーザーが見つからない
+    return res.status(404).json({ message: "ユーザーが見つかりません" });
   }
-  res.status(401).json({ message: "認証失敗" });
+
+  if (user.user_password !== user_password) {
+    // パスワードが間違っている
+    return res.status(401).json({ message: "パスワードが間違っています" });
+  }
+
+  // ログイン成功
+  req.session.user = { id };
+  return res.json({ message: "ログイン成功" });
 });
 
 // 認証チェック
