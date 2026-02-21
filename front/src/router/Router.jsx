@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
-import { Home } from "../components/Home";
-import { SearchResult } from "../components/SearchResult";
-import { MyPage } from "../components/MyPage";
-import { Login } from "../components/Login";
+import { Home } from "../components/pages/Home";
+import { SearchResult } from "../components/pages/SearchResult";
+import { MyPage } from "../components/pages/MyPage";
+import { Login } from "../components/pages/Login";
 import { ProtectedRoute } from "../components/ProtectedRoute";
 import { UserProvider } from "../components/UserContext";
 

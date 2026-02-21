@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { useUser } from "./UserContext";
+import { useUser } from "../UserContext";
 import axios from "axios";
 import { Box, Divider, Flex, Heading, Input, Stack } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { PrimaryButton } from "./atoms/button/PrimaryButton";
-import { useMessage } from "../hooks/useMessage";
+import { PrimaryButton } from "../atoms/button/PrimaryButton";
+import { useMessage } from "../../hooks/useMessage";
 
 export const Login = () => {
   const { user, setUser } = useUser();

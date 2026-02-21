@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { InputRecipes } from "./InputRecipe";
+import { InputRecipes } from "../molecules/InputRecipe";
 import { useNavigate } from "react-router-dom";
-import { Button } from "@chakra-ui/react";
-import { HeaderLayout } from "./templetes/HeaderLayout";
+import { HeaderLayout } from "../templetes/HeaderLayout";
 
 export const Home = () => {
   const [searchRecipeText, setSearchRecipeText] = useState("");
@@ -18,19 +17,13 @@ export const Home = () => {
     nav(`/recipes?keyword=${searchRecipeText}`);
   };
 
-  const onClickToMypage = () => {
-    nav(`/mypages`);
-  };
   return (
     <HeaderLayout>
-      <p>レシピ検索</p>
       <InputRecipes
         searchRecipeText={searchRecipeText}
         onChange={onChangeSearchRecipeText}
         onClickSearch={onClickSearchRecipe}
       />
-      <br />
-      <Button onClick={onClickToMypage}>マイページへ</Button>
     </HeaderLayout>
   );
 };

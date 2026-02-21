@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { RecipeCard } from "./RecipeCard";
-import { useUser } from "./UserContext";
+import { RecipeCard } from "../organisms/recipe/RecipeCard";
+import { useUser } from "../UserContext";
+import { Wrap, WrapItem } from "@chakra-ui/react";
+import { HeaderLayout } from "../templetes/HeaderLayout";
 
 export const SearchResult = () => {
   const [recipes, setRecipes] = useState([]);
@@ -64,18 +66,21 @@ export const SearchResult = () => {
   };
 
   return (
-    <>
+    <HeaderLayout>
       <p>{keyword}</p>
       <p>検索結果：{recipes.length}</p>
-      {recipes.map((recipe) => (
-        <RecipeCard
-          key={recipe.id}
-          recipe={recipe}
-          isFavarite={favorites[recipe.id] || false}
-          onClickFav={handleFavorite}
-          onClickUnFav={handleUnfavorite}
-        />
-      ))}
-    </>
+      <Wrap p={10}>
+        {recipes.map((recipe) => (
+          <WrapItem key={recipe.id}>
+            <RecipeCard
+              recipe={recipe}
+              isFavarite={favorites[recipe.id] || false}
+              onClickFav={handleFavorite}
+              onClickUnFav={handleUnfavorite}
+            />
+          </WrapItem>
+        ))}
+      </Wrap>
+    </HeaderLayout>
   );
 };

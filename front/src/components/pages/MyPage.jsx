@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
-import { RecipeCard } from "./RecipeCard";
-import { useUser } from "./UserContext";
-import { Button } from "@chakra-ui/react";
+import { RecipeCard } from "../organisms/recipe/RecipeCard";
+import { useUser } from "../UserContext";
+import { Wrap, WrapItem } from "@chakra-ui/react";
+import { HeaderLayout } from "../templetes/HeaderLayout";
+import { InputRecipeMemo } from "../molecules/inputRecipeMemo";
 
 export const MyPage = () => {
   const [favRecipes, setFavRecipes] = useState([]);
@@ -53,27 +55,24 @@ export const MyPage = () => {
   };
 
   return (
-    <>
-      <p>マイページです。</p>
-      {favRecipes.map((favRecipe) => (
-        <div key={favRecipe.id}>
-          <RecipeCard
-            recipe={favRecipe}
-            isFavarite={true}
-            onClickUnFav={handleUnfavorite}
-          />
-          <textarea
-            rows="5"
-            cols="33"
-            placeholder="メモ記入欄"
-            onChange={(e) => onChangeMemo(e, favRecipe.id)}
-            value={memo[favRecipe.id] || ""}
-          />
-          <Button onClick={() => onClickSaveMemo(favRecipe.id)}>
-            メモを保存
-          </Button>
-        </div>
-      ))}
-    </>
+    <HeaderLayout>
+      <Wrap p={10}>
+        {favRecipes.map((favRecipe) => (
+          <WrapItem key={favRecipe.id} display="block">
+            <RecipeCard
+              recipe={favRecipe}
+              isFavarite={true}
+              onClickUnFav={handleUnfavorite}
+            />
+            <InputRecipeMemo
+              favRecipe={favRecipe}
+              memo={memo}
+              onChangeMemo={onChangeMemo}
+              onClickSaveMemo={onClickSaveMemo}
+            />
+          </WrapItem>
+        ))}
+      </Wrap>
+    </HeaderLayout>
   );
 };
