@@ -3,7 +3,7 @@ import { RecipeCard } from "../organisms/recipe/RecipeCard";
 import { useUser } from "../UserContext";
 import { Wrap, WrapItem } from "@chakra-ui/react";
 import { HeaderLayout } from "../templetes/HeaderLayout";
-import { InputRecipeMemo } from "../molecules/inputRecipeMemo";
+import { InputRecipeMemo } from "../molecules/InputRecipeMemo";
 
 export const MyPage = () => {
   const [favRecipes, setFavRecipes] = useState([]);
