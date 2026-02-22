@@ -6,14 +6,6 @@ const db = require("./index");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// CORSの設定（Reactアプリからのアクセスを許可）
-app.use(
-  cors({
-    origin: "http://localhost:5173", // React側のURL
-    credentials: true,
-  }),
-);
-
 // セッションの設定
 app.use(
   session({
@@ -24,9 +16,6 @@ app.use(
       secure: false,
       httpOnly: false,
     },
-    // genid: function (req) {
-    //   return "user-1234";
-    // },
   }),
 );
 
