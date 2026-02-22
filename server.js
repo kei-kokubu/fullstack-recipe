@@ -62,6 +62,7 @@ app.get("/api/mypages/:id", async (req, res) => {
   const id = req.params.id;
   const result = await db("favorites")
     .join("recipe", "favorites.recipe_id", "recipe.id")
+    .join("recipe_user", "recipe.user_id", "recipe_user.id")
     .select("*")
     .where("favorites.user_id", id);
   res.send(result);
