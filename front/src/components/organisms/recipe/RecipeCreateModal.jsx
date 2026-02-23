@@ -43,7 +43,7 @@ export const RecipeCreateModal = (props) => {
   const onChangeServenumber = (e) => setServenumber(e.target.value);
   const handleImageChange = (e) => setImage(e.target.files[0]);
 
-  const fetchRecipe = async () => {
+  const fetchRecipe = async (imageUrl) => {
     try {
       const postData = {
         title,
@@ -52,7 +52,7 @@ export const RecipeCreateModal = (props) => {
         instructions,
         genre,
         servenumber: Number(servenumber),
-        image_url: url,
+        image_url: imageUrl,
         user_id: Number(userId),
       };
       await axios.post("/api/recipes", postData);
@@ -86,7 +86,7 @@ export const RecipeCreateModal = (props) => {
       const data = await response.json();
       if (data.success) {
         setUrl(data.data.url);
-        await fetchRecipe();
+        await fetchRecipe(data.data.url);
       } else {
         showMessage({
           title: "画像のアップロードに失敗しました",
