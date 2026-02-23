@@ -1,9 +1,25 @@
 import { useEffect, useState } from "react";
 import { RecipeCard } from "../organisms/recipe/RecipeCard";
 import { useUser } from "../UserContext";
-import { Wrap, WrapItem } from "@chakra-ui/react";
+import {
+  FormControl,
+  FormLabel,
+  Input,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
+  Stack,
+  useDisclosure,
+  Wrap,
+  WrapItem,
+} from "@chakra-ui/react";
 import { HeaderLayout } from "../templetes/HeaderLayout";
 import { InputRecipeMemo } from "../molecules/InputRecipeMemo";
+import { PrimaryButton } from "../atoms/button/PrimaryButton";
+import { RecipeCreateModal } from "../organisms/recipe/RecipeCreateModal";
 
 export const MyPage = () => {
   const [favRecipes, setFavRecipes] = useState([]);
@@ -11,6 +27,7 @@ export const MyPage = () => {
   const [memo, setMemo] = useState({});
   const { user, setUser } = useUser();
   const userId = user.id;
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
     fetch(`/api/mypages/${userId}`)
@@ -54,6 +71,8 @@ export const MyPage = () => {
     setMemo({ ...memo, [recipeId]: e.target.value });
   };
 
+  const onClickCreateBtn = () => onOpen();
+
   return (
     <HeaderLayout>
       <Wrap p={10}>
@@ -73,6 +92,8 @@ export const MyPage = () => {
           </WrapItem>
         ))}
       </Wrap>
+      <PrimaryButton onClick={onClickCreateBtn}>作成</PrimaryButton>
+      <RecipeCreateModal isOpen={isOpen} onClose={onClose} />
     </HeaderLayout>
   );
 };
