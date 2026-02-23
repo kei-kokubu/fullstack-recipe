@@ -40,6 +40,31 @@ app.get("/api/recipes/:keyword", async (req, res) => {
   res.send(result);
 });
 
+app.post("/api/recipes", async (req, res) => {
+  const {
+    title,
+    description,
+    ingredients,
+    instructions,
+    genre,
+    servenumber,
+    user_id,
+    image_url,
+  } = req.body;
+  // console.log("****", typeof user_id);
+  await db("recipe").insert({
+    title,
+    description,
+    ingredients,
+    instructions,
+    genre,
+    servenumber,
+    user_id,
+    image_url,
+  });
+  res.json({ success: true });
+});
+
 app.get("/api/favorites/check", async (req, res) => {
   const { user_id, recipe_id } = req.query;
   const exists = await db("favorites").where({ user_id, recipe_id }).first();
