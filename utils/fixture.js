@@ -1,32 +1,31 @@
 function recipeUser() {
   return [
-    { id: 1, user_name: "hiroshi", user_password: "scsk1" },
-    { id: 2, user_name: "emiko", user_password: "scsk2" },
-    { id: 3, user_name: "料理チャンネルAI", user_password: "scsk3" },
-    { id: 4, user_name: "ゆう", user_password: "scsk4" },
-    { id: 5, user_name: "ノリノリキッチン", user_password: "scsk5" },
-    { id: 6, user_name: "メゾンtokyo", user_password: "scsk6" },
-    { id: 7, user_name: "syunsuke", user_password: "scsk7" },
-    { id: 8, user_name: "makoto", user_password: "scsk8" },
-    { id: 9, user_name: "メグメグ", user_password: "scsk9" },
-    { id: 10, user_name: "takuyaaaa", user_password: "scsk10" },
-    { id: 11, user_name: "hanako", user_password: "scsk11" },
-    { id: 12, user_name: "ryo99", user_password: "scsk12" },
-    { id: 13, user_name: "しんちゃん", user_password: "scsk13" },
-    { id: 14, user_name: "junjun", user_password: "scsk14" },
-    { id: 15, user_name: "yuta", user_password: "scsk15" },
-    { id: 16, user_name: "mai", user_password: "scsk16" },
-    { id: 17, user_name: "satchan", user_password: "scsk17" },
-    { id: 18, user_name: "gaku", user_password: "scsk18" },
-    { id: 19, user_name: "tokyochef", user_password: "scsk19" },
-    { id: 20, user_name: "hayato", user_password: "scsk20" },
+    { user_name: "hiroshi", user_password: "scsk1" },
+    { user_name: "emiko", user_password: "scsk2" },
+    { user_name: "料理チャンネルAI", user_password: "scsk3" },
+    { user_name: "ゆう", user_password: "scsk4" },
+    { user_name: "ノリノリキッチン", user_password: "scsk5" },
+    { user_name: "メゾンtokyo", user_password: "scsk6" },
+    { user_name: "syunsuke", user_password: "scsk7" },
+    { user_name: "makoto", user_password: "scsk8" },
+    { user_name: "メグメグ", user_password: "scsk9" },
+    { user_name: "takuyaaaa", user_password: "scsk10" },
+    { user_name: "hanako", user_password: "scsk11" },
+    { user_name: "ryo99", user_password: "scsk12" },
+    { user_name: "しんちゃん", user_password: "scsk13" },
+    { user_name: "junjun", user_password: "scsk14" },
+    { user_name: "yuta", user_password: "scsk15" },
+    { user_name: "mai", user_password: "scsk16" },
+    { user_name: "satchan", user_password: "scsk17" },
+    { user_name: "gaku", user_password: "scsk18" },
+    { user_name: "tokyochef", user_password: "scsk19" },
+    { user_name: "hayato", user_password: "scsk20" },
   ];
 }
 
 function recipeData() {
   return [
     {
-      id: 1,
       title: "黄金比のキーマカレー",
       description: "スパイスから作る本格派",
       ingredients: "ひき肉, 玉ねぎ, カレー粉",
@@ -38,7 +37,6 @@ function recipeData() {
       image_url: "/キーマカレー.jpeg",
     },
     {
-      id: 2,
       title: "濃厚カルボナーラ",
       description: "生クリーム不使用の本場風",
       ingredients: "パスタ, 卵, パンチェッタ",
@@ -50,7 +48,6 @@ function recipeData() {
       image_url: "/carbo.jpg",
     },
     {
-      id: 3,
       title: "パラパラチャーハン",
       description: "強火が決め手の絶品中華",
       ingredients: "ご飯, 卵, ネギ",
@@ -62,7 +59,6 @@ function recipeData() {
       image_url: "/tyahan.jpg",
     },
     {
-      id: 4,
       title: "肉じゃが",
       description: "お袋の味、定番の煮物",
       ingredients: "牛肉, じゃがいも, 人参",
@@ -74,7 +70,6 @@ function recipeData() {
       image_url: "/nikujaga.avif",
     },
     {
-      id: 5,
       title: "ガパオライス",
       description: "ナンプラーが香るタイ料理",
       ingredients: "鶏ひき肉, バジル, 卵",
@@ -86,7 +81,6 @@ function recipeData() {
       image_url: "/gapao.jpeg",
     },
     {
-      id: 6,
       title: "具沢山豚汁",
       description: "野菜をたっぷり摂取",
       ingredients: "豚肉, ごぼう, 大根",
@@ -98,7 +92,6 @@ function recipeData() {
       image_url: "/tonjiru.jpg",
     },
     {
-      id: 7,
       title: "ペペロンチーノ",
       description: "ニンニクと唐辛子のシンプルパスタ",
       ingredients: "パスタ, ニンニク, 唐辛子",
@@ -110,7 +103,6 @@ function recipeData() {
       image_url: "/pepe.jpeg",
     },
     {
-      id: 8,
       title: "麻婆豆腐",
       description: "ピリ辛が癖になる一品",
       ingredients: "豆腐, 挽肉, 豆板醤",
@@ -122,7 +114,6 @@ function recipeData() {
       image_url: "/mabo.jpg",
     },
     {
-      id: 9,
       title: "ハンバーグ",
       description: "ふっくらジューシーな仕上がり",
       ingredients: "合い挽き肉, パン粉, 玉ねぎ",
@@ -134,7 +125,6 @@ function recipeData() {
       image_url: "/hambarg.avif",
     },
     {
-      id: 10,
       title: "シーザーサラダ",
       description: "自家製ドレッシングのサラダ",
       ingredients: "レタス, ベーコン, チーズ",
@@ -146,7 +136,6 @@ function recipeData() {
       image_url: "/sizer.jpg",
     },
     {
-      id: 11,
       title: "サバの味噌煮",
       description: "ご飯が進む定番和食",
       ingredients: "サバ, 生姜, 味噌",
@@ -158,7 +147,6 @@ function recipeData() {
       image_url: "/saba.avif",
     },
     {
-      id: 12,
       title: "エビチリ",
       description: "プリプリのエビをチリソースで",
       ingredients: "エビ, ケチャップ, 豆板醤",
@@ -170,7 +158,6 @@ function recipeData() {
       image_url: "/ebi.avif",
     },
     {
-      id: 13,
       title: "マルゲリータピザ",
       description: "生地から作る手作りピザ",
       ingredients: "強力粉, トマト, モッツァレラ",
@@ -182,7 +169,6 @@ function recipeData() {
       image_url: "/pizza.jpeg",
     },
     {
-      id: 14,
       title: "オムライス",
       description: "昔ながらの洋食屋さんの味",
       ingredients: "卵, ご飯, ケチャップ",
@@ -194,7 +180,6 @@ function recipeData() {
       image_url: "/オム.jpeg",
     },
     {
-      id: 15,
       title: "親子丼",
       description: "トロトロ卵の優しい味",
       ingredients: "鶏肉, 卵, 玉ねぎ",
@@ -206,7 +191,6 @@ function recipeData() {
       image_url: "/don.webp",
     },
     {
-      id: 16,
       title: "餃子",
       description: "皮から手作りモチモチ餃子",
       ingredients: "豚肉, キャベツ, 餃子の皮",
@@ -218,7 +202,6 @@ function recipeData() {
       image_url: "/gyoza.jpg",
     },
     {
-      id: 17,
       title: "パンケーキ",
       description: "ふわふわな朝食メニュー",
       ingredients: "小麦粉, 牛乳, 卵",
@@ -230,7 +213,6 @@ function recipeData() {
       image_url: "/cake.jpg",
     },
     {
-      id: 18,
       title: "照り焼きチキン",
       description: "甘辛いタレが絶妙",
       ingredients: "鶏もも肉, 醤油, みりん",
@@ -242,7 +224,6 @@ function recipeData() {
       image_url: "/teri.jpg",
     },
     {
-      id: 19,
       title: "クラムチャウダー",
       description: "あさりの旨味たっぷりスープ",
       ingredients: "あさり, 牛乳, ジャガイモ",
@@ -254,7 +235,6 @@ function recipeData() {
       image_url: "/kura.webp",
     },
     {
-      id: 20,
       title: "ティラミス",
       description: "大人のデザート",
       ingredients: "マスカルポーネ, コーヒー",

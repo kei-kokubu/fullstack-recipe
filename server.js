@@ -24,7 +24,8 @@ app.use(express.static(path.join(__dirname, "/public")));
 app.get("/api/recipes", async (req, res) => {
   const result = await db("recipe")
     .join("recipe_user", "recipe.user_id", "recipe_user.id")
-    .select("*");
+    .select("recipe.*", "recipe_user.user_name")
+    .orderBy("recipe.created_at", "desc");
   res.send(result);
 });
 
@@ -32,11 +33,12 @@ app.get("/api/recipes/:keyword", async (req, res) => {
   const keyword = req.params.keyword;
   const result = await db("recipe")
     .join("recipe_user", "recipe.user_id", "recipe_user.id")
-    .select("*")
     .where("title", "like", `%${keyword}%`)
     .orWhere("description", "like", `%${keyword}%`)
     .orWhere("ingredients", "like", `%${keyword}%`)
-    .orWhere("genre", "like", `%${keyword}%`);
+    .orWhere("genre", "like", `%${keyword}%`)
+    .select("recipe.*", "recipe_user.user_name")
+    .orderBy("recipe.created_at", "desc");
   res.send(result);
 });
 
@@ -51,17 +53,19 @@ app.post("/api/recipes", async (req, res) => {
     user_id,
     image_url,
   } = req.body;
-  // console.log("****", typeof user_id);
-  await db("recipe").insert({
-    title,
-    description,
-    ingredients,
-    instructions,
-    genre,
-    servenumber,
-    user_id,
-    image_url,
-  });
+  const result = await db("recipe")
+    .insert({
+      title,
+      description,
+      ingredients,
+      instructions,
+      genre,
+      servenumber,
+      user_id,
+      image_url,
+    })
+    .returning("*");
+  console.log("=====", result);
   res.json({ success: true });
 });
 
@@ -88,8 +92,9 @@ app.get("/api/mypages/:id", async (req, res) => {
   const result = await db("favorites")
     .join("recipe", "favorites.recipe_id", "recipe.id")
     .join("recipe_user", "recipe.user_id", "recipe_user.id")
-    .select("*")
-    .where("favorites.user_id", id);
+    .select("recipe.*", "recipe_user.user_name")
+    .where("favorites.user_id", id)
+    .orderBy("favorites.created_at", "desc");
   res.send(result);
 });
 

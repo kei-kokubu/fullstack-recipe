@@ -68,8 +68,6 @@ export const SearchResult = () => {
 
   return (
     <HeaderLayout>
-      {/* <p>{keyword}</p>
-      <p>検索結果：{recipes.length}</p> */}
       <NumberOfHits keyword={keyword} hits={recipes.length} />
       <Wrap p={10}>
         {recipes.map((recipe) => (
