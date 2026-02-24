@@ -40,7 +40,7 @@ export const Header = () => {
         onClick={onClickHome}
       >
         <Heading as="h1" size="lg">
-          レシピ検索アプリ
+          クックストック
         </Heading>
       </Flex>
       <Flex align="center" fontSize="md" flexGrow={2}>

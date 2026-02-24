@@ -68,7 +68,7 @@ export const Login = () => {
     <Flex align="center" justify="center" height="100vh">
       <Box bg="white" w="sm" p={4} borderRadius="md" shadow="md">
         <Heading as="h1" size="lg" textAlign="center">
-          レシピ検索アプリ
+          クックストック
         </Heading>
         <Divider my={4} />
         <Stack spacing={4} py={4} px={10}>
