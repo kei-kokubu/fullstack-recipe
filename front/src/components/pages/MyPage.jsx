@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { RecipeCard } from "../organisms/recipe/RecipeCard";
 import { useUser } from "../UserContext";
-import { useDisclosure, Wrap, WrapItem } from "@chakra-ui/react";
+import { Box, useDisclosure, Wrap, WrapItem } from "@chakra-ui/react";
 import { HeaderLayout } from "../templetes/HeaderLayout";
 import { InputRecipeMemo } from "../molecules/InputRecipeMemo";
-import { PrimaryButton } from "../atoms/button/PrimaryButton";
 import { RecipeCreateModal } from "../organisms/recipe/RecipeCreateModal";
+import { FaPlus } from "react-icons/fa";
+import { CreateButton } from "../atoms/button/CreateButton";
 
 export const MyPage = () => {
   const [favRecipes, setFavRecipes] = useState([]);
@@ -78,7 +79,11 @@ export const MyPage = () => {
           </WrapItem>
         ))}
       </Wrap>
-      <PrimaryButton onClick={onClickCreateBtn}>作成</PrimaryButton>
+      <Box position="fixed" bottom={10} right={20}>
+        <CreateButton onClick={onClickCreateBtn}>
+          <FaPlus />
+        </CreateButton>
+      </Box>
       <RecipeCreateModal isOpen={isOpen} onClose={onClose} />
     </HeaderLayout>
   );
