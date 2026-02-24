@@ -92,7 +92,7 @@ app.get("/api/mypages/:id", async (req, res) => {
   const result = await db("favorites")
     .join("recipe", "favorites.recipe_id", "recipe.id")
     .join("recipe_user", "recipe.user_id", "recipe_user.id")
-    .select("recipe.*", "recipe_user.user_name")
+    .select("favorites.*", "recipe.*", "recipe_user.user_name")
     .where("favorites.user_id", id)
     .orderBy("favorites.created_at", "desc");
   res.send(result);
